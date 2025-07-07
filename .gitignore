@@ -1,0 +1,58 @@
+# === Python Virtual Environments ===
+venv/
+env/
+.venv/
+.Python
+
+# === Node.js ===
+node_modules/
+npm-debug.log*
+yarn-error.log
+
+# === Python Cache ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+
+# === Model & Data Files ===
+models/
+data/
+
+# === IDE Settings ===
+.vscode/
+.idea/
+
+# === OS Metadata ===
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# === Logs ===
+*.log
+
+# === Environment Files ===
+.env
+.env.*
+
+# === Test Coverage ===
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# === Build Artifacts ===
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+
+# === Misc ===
+*.bak
+*.swp
+*.swo
