@@ -48,7 +48,8 @@ Erkannte Kategorie: error
 ### Backend Setup
 ```bash
 Installation
-bash# Repository klonen
+
+# Repository klonen
 git clone https://github.com/jqttk-v/vTranslation-poc.git
 cd vTranslation-poc
 
@@ -58,6 +59,7 @@ python -m venv venv
 # Virtuelle Umgebung aktivieren
 # Windows:
 venv\Scripts\activate
+
 # macOS/Linux:
 source venv/bin/activate
 
@@ -87,21 +89,21 @@ Das System ist dann erreichbar unter:
 
 
 ```
-Database connection timeout after 30 seconds
+- Database connection timeout after 30 seconds
 
-Unable to establish connection to database server
+- Unable to establish connection to database server
 
-Failed to authenticate with database credentials
+- Failed to authenticate with database credentials
 
-Query execution took too long and was aborted
+- Query execution took too long and was aborted
 
-Database is currently unavailable — please try again later
+- Database is currently unavailable — please try again later
 
-Connection refused by database host
+- Connection refused by database host
 
-Database connection pool exhausted — too many connections
+- Database connection pool exhausted — too many connections
 
-Invalid database schema detected
+- Invalid database schema detected
 ```
 
 ### Web Interface
@@ -126,6 +128,8 @@ Invalid database schema detected
 | `zh` | 中文 | Helsinki-NLP/opus-mt-en-zh | 🔄 Bedarfsgesteuert |
 | `ja` | 日本語 | Helsinki-NLP/opus-mt-en-jap | 🔄 Bedarfsgesteuert |
 | `ko` | 한국어 | Helsinki-NLP/opus-mt-en-ko | 🔄 Bedarfsgesteuert |
+
+Weitere können im Code auskommentiert werden. 
 
 ## 🔍 Kategorieerkennung
 
@@ -167,7 +171,7 @@ curl http://localhost:5000/api/languages
 │ • Database logs │    │ • Category       │    │ • Structured    │
 │ • Error alerts  │    │   Detection      │    │   Format        │
 │ • System status │    │ • Local LLM      │    │ • Copy-ready    │
-└─────────────────┘    │ • 10 Languages   │    │ • API Response  │
+└─────────────────┘    │ • 10+ Languages   │    │ • API Response  │
                        └──────────────────┘    └─────────────────┘
 ```
 ## 📈 Leistungsmetriken
