@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-VICOS Translation Service - Enterprise-Grade Multilingual Translation API
+VICOS Translation Service - Minimal Multilingual Translation API
 
 Author: Joshua Quattek
 Organization: VIRTIMO AG
 Version: 2.0.0-minimal
 Created: 2025-07-07
-Last Modified: 2025-07-07
+Last Modified: 2025-07-08
 
 Description:
-    Production-ready Flask API service for real-time translation of system monitoring
+    Flask API service for real-time translation of system monitoring
     messages into multiple languages. Leverages local Helsinki-NLP OPUS models for
     complete data sovereignty without cloud dependencies.
 
@@ -109,54 +109,54 @@ SUPPORTED_LANGUAGES: Dict[str, Dict[str, str]] = {
     'el': {'name': 'Greek',           'model': 'Helsinki-NLP/opus-mt-en-el'},
     'es': {'name': 'Español',         'model': 'Helsinki-NLP/opus-mt-en-es'},
    # 'et': {'name': 'Estonian',        'model': 'Helsinki-NLP/opus-mt-en-et'},
-  #  'fa': {'name': 'Persian',         'model': 'Helsinki-NLP/opus-mt-en-fa'},
-  #  'fi': {'name': 'Finnish',         'model': 'Helsinki-NLP/opus-mt-en-fi'},
+   #  'fa': {'name': 'Persian',         'model': 'Helsinki-NLP/opus-mt-en-fa'},
+   #  'fi': {'name': 'Finnish',         'model': 'Helsinki-NLP/opus-mt-en-fi'},
     'fr': {'name': 'Français',        'model': 'Helsinki-NLP/opus-mt-en-fr'},
-  #  'ga': {'name': 'Irish',           'model': 'Helsinki-NLP/opus-mt-en-ga'},
-  #  'gl': {'name': 'Galician',        'model': 'Helsinki-NLP/opus-mt-en-gl'},
-  # 'gu': {'name': 'Gujarati',        'model': 'Helsinki-NLP/opus-mt-en-gu'},
-  #  'he': {'name': 'Hebrew',          'model': 'Helsinki-NLP/opus-mt-en-he'},
- #   'hi': {'name': 'Hindi',           'model': 'Helsinki-NLP/opus-mt-en-hi'},
+   #  'ga': {'name': 'Irish',           'model': 'Helsinki-NLP/opus-mt-en-ga'},
+   #  'gl': {'name': 'Galician',        'model': 'Helsinki-NLP/opus-mt-en-gl'},
+   # 'gu': {'name': 'Gujarati',        'model': 'Helsinki-NLP/opus-mt-en-gu'},
+   #  'he': {'name': 'Hebrew',          'model': 'Helsinki-NLP/opus-mt-en-he'},
+   #   'hi': {'name': 'Hindi',           'model': 'Helsinki-NLP/opus-mt-en-hi'},
     'hr': {'name': 'Croatian',        'model': 'Helsinki-NLP/opus-mt-en-hr'},
- #   'ht': {'name': 'Haitian Creole',  'model': 'Helsinki-NLP/opus-mt-en-ht'},
- #   'hu': {'name': 'Hungarian',       'model': 'Helsinki-NLP/opus-mt-en-hu'},
- #   'hy': {'name': 'Armenian',        'model': 'Helsinki-NLP/opus-mt-en-hy'},
+   #   'ht': {'name': 'Haitian Creole',  'model': 'Helsinki-NLP/opus-mt-en-ht'},
+   #   'hu': {'name': 'Hungarian',       'model': 'Helsinki-NLP/opus-mt-en-hu'},
+   #   'hy': {'name': 'Armenian',        'model': 'Helsinki-NLP/opus-mt-en-hy'},
 
     # ---- I – L ----
-  #  'id': {'name': 'Indonesian',      'model': 'Helsinki-NLP/opus-mt-en-id'},
-  #  'is': {'name': 'Icelandic',       'model': 'Helsinki-NLP/opus-mt-en-is'},
+   #  'id': {'name': 'Indonesian',      'model': 'Helsinki-NLP/opus-mt-en-id'},
+   #  'is': {'name': 'Icelandic',       'model': 'Helsinki-NLP/opus-mt-en-is'},
     'it': {'name': 'Italiano',        'model': 'Helsinki-NLP/opus-mt-en-it'},
-  #  'ja': {'name': '日本語',           'model': 'Helsinki-NLP/opus-mt-en-ja'},
-  #  'ka': {'name': 'Georgian',        'model': 'Helsinki-NLP/opus-mt-en-ka'},
-  #  'kk': {'name': 'Kazakh',          'model': 'Helsinki-NLP/opus-mt-en-kk'},
-   # 'km': {'name': 'Khmer',           'model': 'Helsinki-NLP/opus-mt-en-km'},
-   # 'kn': {'name': 'Kannada',         'model': 'Helsinki-NLP/opus-mt-en-kn'},
-   # 'ko': {'name': '한국어',           'model': 'Helsinki-NLP/opus-mt-tc-big-en-ko'},
-  #  'ku': {'name': 'Kurdish',         'model': 'Helsinki-NLP/opus-mt-en-ku'},
-  #  'ky': {'name': 'Kyrgyz',          'model': 'Helsinki-NLP/opus-mt-en-ky'},
-  #  'lt': {'name': 'Lithuanian',      'model': 'Helsinki-NLP/opus-mt-en-lt'},
-  #  'lv': {'name': 'Latvian',         'model': 'Helsinki-NLP/opus-mt-en-lv'},
+   #  'ja': {'name': '日本語',           'model': 'Helsinki-NLP/opus-mt-en-ja'},
+   #  'ka': {'name': 'Georgian',        'model': 'Helsinki-NLP/opus-mt-en-ka'},
+   #  'kk': {'name': 'Kazakh',          'model': 'Helsinki-NLP/opus-mt-en-kk'},
+   #  'km': {'name': 'Khmer',           'model': 'Helsinki-NLP/opus-mt-en-km'},
+   #  'kn': {'name': 'Kannada',         'model': 'Helsinki-NLP/opus-mt-en-kn'},
+   #  'ko': {'name': '한국어',           'model': 'Helsinki-NLP/opus-mt-tc-big-en-ko'},
+   #  'ku': {'name': 'Kurdish',         'model': 'Helsinki-NLP/opus-mt-en-ku'},
+   #  'ky': {'name': 'Kyrgyz',          'model': 'Helsinki-NLP/opus-mt-en-ky'},
+   #  'lt': {'name': 'Lithuanian',      'model': 'Helsinki-NLP/opus-mt-en-lt'},
+   #  'lv': {'name': 'Latvian',         'model': 'Helsinki-NLP/opus-mt-en-lv'},
 
     # ---- M – N ----
-   # 'mk': {'name': 'Macedonian',      'model': 'Helsinki-NLP/opus-mt-en-mk'},
-  #  'ml': {'name': 'Malayalam',       'model': 'Helsinki-NLP/opus-mt-en-ml'},
- #   'mn': {'name': 'Mongolian',       'model': 'Helsinki-NLP/opus-mt-en-mn'},
-  #  'mr': {'name': 'Marathi',         'model': 'Helsinki-NLP/opus-mt-en-mr'},
-  #  'ms': {'name': 'Malay',           'model': 'Helsinki-NLP/opus-mt-en-ms'},
-  #  'mt': {'name': 'Maltese',         'model': 'Helsinki-NLP/opus-mt-en-mt'},
-   # 'my': {'name': 'Burmese',         'model': 'Helsinki-NLP/opus-mt-en-my'},
-  #  'ne': {'name': 'Nepali',          'model': 'Helsinki-NLP/opus-mt-en-ne'},
-  #  'nl': {'name': 'Nederlands',      'model': 'Helsinki-NLP/opus-mt-en-nl'},
-  #  'no': {'name': 'Norwegian',       'model': 'Helsinki-NLP/opus-mt-en-no'},
-#
+   #  'mk': {'name': 'Macedonian',      'model': 'Helsinki-NLP/opus-mt-en-mk'},
+   #  'ml': {'name': 'Malayalam',       'model': 'Helsinki-NLP/opus-mt-en-ml'},
+   #  'mn': {'name': 'Mongolian',       'model': 'Helsinki-NLP/opus-mt-en-mn'},
+   #  'mr': {'name': 'Marathi',         'model': 'Helsinki-NLP/opus-mt-en-mr'},
+   #  'ms': {'name': 'Malay',           'model': 'Helsinki-NLP/opus-mt-en-ms'},
+   #  'mt': {'name': 'Maltese',         'model': 'Helsinki-NLP/opus-mt-en-mt'},
+   #  'my': {'name': 'Burmese',         'model': 'Helsinki-NLP/opus-mt-en-my'},
+   #  'ne': {'name': 'Nepali',          'model': 'Helsinki-NLP/opus-mt-en-ne'},
+   #  'nl': {'name': 'Nederlands',      'model': 'Helsinki-NLP/opus-mt-en-nl'},
+   #  'no': {'name': 'Norwegian',       'model': 'Helsinki-NLP/opus-mt-en-no'},
+
     # ---- O – R ----
-#    'or': {'name': 'Odia',            'model': 'Helsinki-NLP/opus-mt-en-or'},
- #   'pa': {'name': 'Punjabi',         'model': 'Helsinki-NLP/opus-mt-en-pa'},
-  #  'pl': {'name': 'Polish',          'model': 'Helsinki-NLP/opus-mt-en-pl'},
- #   'ps': {'name': 'Pashto',          'model': 'Helsinki-NLP/opus-mt-en-ps'},
+   #  'or': {'name': 'Odia',            'model': 'Helsinki-NLP/opus-mt-en-or'},
+   #   'pa': {'name': 'Punjabi',         'model': 'Helsinki-NLP/opus-mt-en-pa'},
+   #  'pl': {'name': 'Polish',          'model': 'Helsinki-NLP/opus-mt-en-pl'},
+   #   'ps': {'name': 'Pashto',          'model': 'Helsinki-NLP/opus-mt-en-ps'},
     'pt': {'name': 'Português',       'model': 'Helsinki-NLP/opus-mt-tc-big-en-pt'},
- #   'ro': {'name': 'Romanian',        'model': 'Helsinki-NLP/opus-mt-en-ro'},
- #   'ru': {'name': 'Русский',         'model': 'Helsinki-NLP/opus-mt-en-ru'},
+   #   'ro': {'name': 'Romanian',        'model': 'Helsinki-NLP/opus-mt-en-ro'},
+   #   'ru': {'name': 'Русский',         'model': 'Helsinki-NLP/opus-mt-en-ru'},
 
     # ---- S ----
  #   'si': {'name': 'Sinhala',         'model': 'Helsinki-NLP/opus-mt-en-si'},
@@ -168,16 +168,16 @@ SUPPORTED_LANGUAGES: Dict[str, Dict[str, str]] = {
  #   'sw': {'name': 'Swahili',         'model': 'Helsinki-NLP/opus-mt-en-sw'},
  #   'ta': {'name': 'Tamil',           'model': 'Helsinki-NLP/opus-mt-en-ta'},
  #   'te': {'name': 'Telugu',          'model': 'Helsinki-NLP/opus-mt-en-te'},
-  #  'th': {'name': 'Thai',            'model': 'Helsinki-NLP/opus-mt-en-th'},
-  #  'tl': {'name': 'Tagalog',         'model': 'Helsinki-NLP/opus-mt-en-tl'},
-  #  'tr': {'name': 'Turkish',         'model': 'Helsinki-NLP/opus-mt-en-tr'},
+ #  'th': {'name': 'Thai',            'model': 'Helsinki-NLP/opus-mt-en-th'},
+ #  'tl': {'name': 'Tagalog',         'model': 'Helsinki-NLP/opus-mt-en-tl'},
+ #  'tr': {'name': 'Turkish',         'model': 'Helsinki-NLP/opus-mt-en-tr'},
 
     # ---- U – Z ----
-    'uk': {'name': 'Ukrainian',       'model': 'Helsinki-NLP/opus-mt-en-uk'},
-  #  'ur': {'name': 'Urdu',            'model': 'Helsinki-NLP/opus-mt-en-ur'},
+     'uk': {'name': 'Ukrainian',       'model': 'Helsinki-NLP/opus-mt-en-uk'},
+ #   'ur': {'name': 'Urdu',            'model': 'Helsinki-NLP/opus-mt-en-ur'},
  #   'uz': {'name': 'Uzbek',           'model': 'Helsinki-NLP/opus-mt-en-uz'},
-#    'vi': {'name': 'Vietnamese',      'model': 'Helsinki-NLP/opus-mt-en-vi'},
-  #  'zh': {'name': '中文',             'model': 'Helsinki-NLP/opus-mt-en-zh'}
+ #   'vi': {'name': 'Vietnamese',      'model': 'Helsinki-NLP/opus-mt-en-vi'},
+ #   'zh': {'name': '中文',             'model': 'Helsinki-NLP/opus-mt-en-zh'}
 }
 
 
